@@ -1,7 +1,7 @@
 <template>
   <div class="cardContainer">
     <div class="card">
-      <div class="title"><h1 class="titleName">To Do</h1></div>
+      <div class="title"><div class="titleName">To Do</div></div>
     </div>
   </div>
 </template>
