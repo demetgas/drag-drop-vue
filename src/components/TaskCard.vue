@@ -1,5 +1,9 @@
 <template>
-  <div class="hello">Hello</div>
+  <div class="cardContainer">
+    <div class="card">
+      <div class="title"><h1 class="titleName">To Do</h1></div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -12,7 +16,7 @@ export default {
 </script>
 
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+.titleName {
+  color: white;
 }
 </style>
