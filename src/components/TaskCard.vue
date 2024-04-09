@@ -3,7 +3,7 @@
     <div class="card">
       <div class="title"><div class="titleName">To Do</div></div>
       <div class="list">
-        <div class="listItems">Task 1</div>
+        <div class="listItem">Task 1</div>
       </div>
     </div>
   </div>
@@ -43,5 +43,17 @@ export default {
   height: 680px;
   overflow-y: auto;
   overflow-x: hidden;
+}
+.listItem {
+  border-radius: 5px;
+  margin: 5px 7px;
+  background-color: rgb(224, 225, 228);
+  color: black;
+  padding: 40px;
+  width: 250px;
+  border: 1px solid #fcfcfc;
+  font-weight: bold;
+  cursor: pointer;
+  overflow: visible;
 }
 </style>
