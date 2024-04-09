@@ -89,6 +89,7 @@ export default {
   border-radius: 5px;
   margin-right: 20px;
   text-align: center;
+  font-family: "Times New Roman", Times, serif;
 }
 .title {
   border-radius: 5px;
