@@ -3,7 +3,7 @@
     <div class="card">
       <div class="title"><div class="titleName">To Do</div></div>
       <div class="list">
-        <div class="items"><div class="listItems">Task 1</div></div>
+        <div class="listItems">Task 1</div>
       </div>
     </div>
   </div>
@@ -19,6 +19,11 @@ export default {
 </script>
 
 <style scoped>
+.card {
+  border-radius: 5px;
+  margin-right: 20px;
+  text-align: center;
+}
 .title {
   background-color: #a54b4a;
   border-radius: 5px;
@@ -29,5 +34,14 @@ export default {
   font-weight: bold;
   color: white;
   width: 250px;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  background-color: rgb(192, 196, 209);
+  height: 680px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 </style>

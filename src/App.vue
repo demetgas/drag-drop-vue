@@ -1,6 +1,7 @@
 <template>
   <div class="App">
     <TaskCard />
+    <TaskCard />
   </div>
 </template>
 
