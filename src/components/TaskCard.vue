@@ -1,9 +1,13 @@
 <template>
   <div class="cardContainer">
-    <div class="card">
-      <div class="title"><div class="titleName">To Do</div></div>
+    <div v-for="x in data" :key="x.id" class="card">
+      <div class="title" :style="{ backgroundColor: x.backgroundColor }">
+        <div class="titleName">{{ x.id }}</div>
+      </div>
       <div class="list">
-        <div class="listItem">Task 1</div>
+        <div class="listItem" v-for="task in x.tasks" :key="task.name">
+          {{ task.name }}
+        </div>
       </div>
     </div>
   </div>
@@ -58,13 +62,15 @@ export default {
 </script>
 
 <style scoped>
+.cardContainer {
+  display: flex;
+}
 .card {
   border-radius: 5px;
   margin-right: 20px;
   text-align: center;
 }
 .title {
-  background-color: #a54b4a;
   border-radius: 5px;
   padding: 48px;
   border: 1px solid #ccc;
