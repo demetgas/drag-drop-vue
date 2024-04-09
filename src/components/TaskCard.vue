@@ -5,7 +5,12 @@
         <div class="titleName">{{ x.id }}</div>
       </div>
       <div class="list">
-        <div class="listItem" v-for="task in x.tasks" :key="task.name">
+        <div
+          class="listItem"
+          :draggable="true"
+          v-for="task in x.tasks"
+          :key="task.name"
+        >
           {{ task.name }}
         </div>
       </div>
