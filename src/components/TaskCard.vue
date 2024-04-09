@@ -18,9 +18,13 @@ export default {
 <style scoped>
 .title {
   background-color: #a54b4a;
-  width: 250px;
+  border-radius: 5px;
+  padding: 48px;
+  border: 1px solid #ccc;
 }
 .titleName {
+  font-weight: bold;
   color: white;
+  width: 250px;
 }
 </style>
