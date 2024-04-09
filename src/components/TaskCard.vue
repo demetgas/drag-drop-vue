@@ -16,6 +16,10 @@ export default {
 </script>
 
 <style scoped>
+.title {
+  background-color: #a54b4a;
+  width: 250px;
+}
 .titleName {
   color: white;
 }
