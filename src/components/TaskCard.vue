@@ -13,6 +13,7 @@
         >
           {{ task.name }}
         </div>
+        <button class="btn">Load More</button>
       </div>
     </div>
   </div>
@@ -105,5 +106,20 @@ export default {
   font-weight: bold;
   cursor: pointer;
   overflow: visible;
+}
+.btn {
+  border-radius: 5px;
+  padding: 10px;
+  margin: auto;
+  margin-top: auto;
+  margin-bottom: 20px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  background-color: rgb(74, 83, 112);
+}
+
+.btn:hover {
+  background-color: rgb(54, 62, 86);
 }
 </style>
