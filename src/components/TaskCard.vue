@@ -2,6 +2,9 @@
   <div class="cardContainer">
     <div class="card">
       <div class="title"><div class="titleName">To Do</div></div>
+      <div class="list">
+        <div class="items"><div class="listItems">Task 1</div></div>
+      </div>
     </div>
   </div>
 </template>
