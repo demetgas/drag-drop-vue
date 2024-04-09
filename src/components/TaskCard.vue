@@ -62,6 +62,20 @@ export default {
           backgroundColor: "#A5A14A",
         },
       ],
+      showMoreTasks: {},
+      methods: {
+        showMoreTasks(id) {
+          this.showMoreTasks = {
+            ...this.showMoreTasks,
+            [id]: !this.showMoreTasks[id],
+          };
+        },
+        displayTasks(x) {
+          return this.showMoreTasks[x.id]
+            ? x.tasks
+            : x.arrayItem.tasks.slice(0, 5);
+        },
+      },
     };
   },
 };
