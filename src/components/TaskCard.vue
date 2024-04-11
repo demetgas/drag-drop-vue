@@ -1,24 +1,24 @@
 <template>
   <div class="cardContainer">
-    <div v-for="x in data" :key="x.id" class="card">
-      <div class="title" :style="{ backgroundColor: x.backgroundColor }">
-        <div class="titleName">{{ x.id }}</div>
+    <div v-for="dataItem in data" :key="dataItem.id" class="card">
+      <div class="title" :style="{ backgroundColor: dataItem.backgroundColor }">
+        <div class="titleName">{{ dataItem.id }}</div>
       </div>
       <div class="list">
         <div
           class="listItem"
           :draggable="true"
-          v-for="task in x.tasks"
-          :key="task.name"
+          v-for="(task, taskIndex) in displayTasks(dataItem)"
+          :key="taskIndex"
         >
           {{ task.name }}
         </div>
         <button
+          v-if="dataItem.tasks.length > 5"
           class="btn"
-          @click="showMoreTasks(x.id)"
-          v-if="x.tasks.length > 5"
+          @click="toggleShowMoreTasks(dataItem.id)"
         >
-          {{ newTasks[x.id] ? "Show Less" : "Load More" }}
+          {{ showMoreTasks[dataItem.id] ? "Show Less" : "Load More" }}
         </button>
       </div>
     </div>
@@ -68,19 +68,21 @@ export default {
           backgroundColor: "#A5A14A",
         },
       ],
-      newTasks: {},
+      showMoreTasks: {},
     };
   },
 
   methods: {
-    showMoreTasks(id) {
-      this.newTasks = {
-        ...this.newTasks,
-        [id]: !this.newTasks[id],
+    toggleShowMoreTasks(id) {
+      this.showMoreTasks = {
+        ...this.showMoreTasks,
+        [id]: !this.showMoreTasks[id],
       };
     },
-    displayTasks(x) {
-      return this.newTasks[x.id] ? x.tasks : x.arrayItem.tasks.slice(0, 5);
+    displayTasks(dataItem) {
+      return this.showMoreTasks[dataItem.id]
+        ? dataItem.tasks
+        : dataItem.tasks.slice(0, 5);
     },
   },
 };
