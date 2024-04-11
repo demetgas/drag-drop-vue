@@ -95,9 +95,9 @@ export default {
   align-items: center;
 }
 .listItem {
-  display: flex; /* Change display to flex */
-  align-items: center; /* Center items vertically */
-  justify-content: center; /* Center items horizontally */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 5px;
   margin: 5px 7px;
   background-color: rgb(224, 225, 228);
@@ -113,7 +113,7 @@ export default {
 }
 
 .icon {
-  margin-right: 10px; /* Add margin to create space between icon and text */
+  margin-right: 10px;
   color: rgb(125, 120, 120);
   font-size: 15px;
 }
