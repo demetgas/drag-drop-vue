@@ -11,6 +11,8 @@
           v-for="(task, taskIndex) in displayTasks(dataItem)"
           :key="taskIndex"
         >
+          <font-awesome-icon :icon="faGripVertical" />
+
           {{ task.name }}
         </div>
         <button
@@ -27,12 +29,17 @@
 
 <script>
 import { data } from "../data.js";
+import { faGripVertical } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 export default {
   data() {
     return {
       data: data,
       showMoreTasks: {},
     };
+  },
+  components: {
+    FontAwesomeIcon,
   },
 
   methods: {
@@ -46,6 +53,11 @@ export default {
       return this.showMoreTasks[dataItem.id]
         ? dataItem.tasks
         : dataItem.tasks.slice(0, 5);
+    },
+  },
+  computed: {
+    faGripVertical() {
+      return faGripVertical;
     },
   },
 };
