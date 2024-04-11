@@ -11,9 +11,10 @@
           v-for="(task, taskIndex) in displayTasks(dataItem)"
           :key="taskIndex"
         >
-          <font-awesome-icon :icon="faGripVertical" />
-
-          {{ task.name }}
+          <font-awesome-icon class="icon" :icon="faGripVertical" />
+          <div class="taskName">
+            {{ task.name }}
+          </div>
         </div>
         <button
           v-if="dataItem.tasks.length > 5"
@@ -70,13 +71,13 @@ export default {
 .card {
   border-radius: 5px;
   margin-right: 20px;
-  text-align: center;
   font-family: "Times New Roman", Times, serif;
 }
 .title {
   border-radius: 5px;
   padding: 48px;
   border: 1px solid #ccc;
+  text-align: center;
 }
 .titleName {
   font-weight: bold;
@@ -91,18 +92,39 @@ export default {
   height: 680px;
   overflow-y: auto;
   overflow-x: hidden;
+  align-items: center;
 }
 .listItem {
+  display: flex; /* Change display to flex */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
   border-radius: 5px;
   margin: 5px 7px;
   background-color: rgb(224, 225, 228);
   color: black;
-  padding: 40px;
+  padding: 35px 40px;
   width: 250px;
   border: 1px solid #fcfcfc;
   font-weight: bold;
-  cursor: pointer;
   overflow: visible;
+  cursor: grab;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.icon {
+  margin-right: 10px; /* Add margin to create space between icon and text */
+  color: rgb(125, 120, 120);
+  font-size: 15px;
+}
+.taskName {
+  padding: 0;
+  margin: 0;
+  margin-right: 4.5rem;
+  width: 100px;
+}
+.listItem:active {
+  cursor: grabbing;
 }
 .btn {
   border-radius: 5px;
