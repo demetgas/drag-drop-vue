@@ -13,7 +13,13 @@
         >
           {{ task.name }}
         </div>
-        <button class="btn">Load More</button>
+        <button
+          class="btn"
+          @click="showMoreTasks(x.id)"
+          v-if="x.tasks.length > 5"
+        >
+          {{ newTasks[x.id] ? "Show Less" : "Load More" }}
+        </button>
       </div>
     </div>
   </div>
@@ -62,21 +68,20 @@ export default {
           backgroundColor: "#A5A14A",
         },
       ],
-      showMoreTasks: {},
-      methods: {
-        showMoreTasks(id) {
-          this.showMoreTasks = {
-            ...this.showMoreTasks,
-            [id]: !this.showMoreTasks[id],
-          };
-        },
-        displayTasks(x) {
-          return this.showMoreTasks[x.id]
-            ? x.tasks
-            : x.arrayItem.tasks.slice(0, 5);
-        },
-      },
+      newTasks: {},
     };
+  },
+
+  methods: {
+    showMoreTasks(id) {
+      this.newTasks = {
+        ...this.newTasks,
+        [id]: !this.newTasks[id],
+      };
+    },
+    displayTasks(x) {
+      return this.newTasks[x.id] ? x.tasks : x.arrayItem.tasks.slice(0, 5);
+    },
   },
 };
 </script>
