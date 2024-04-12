@@ -125,6 +125,7 @@ export default {
 }
 .listItem:active {
   cursor: grabbing;
+  box-shadow: 2px 2px 5px #73767a;
 }
 .btn {
   border-radius: 5px;
