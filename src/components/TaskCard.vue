@@ -16,9 +16,14 @@
           :key="taskIndex"
           @dragstart="handleDragStart($event, task.name, dataItem.id)"
           @dragenter="
-            handleDragEnter($event, task.name, { id: dataItem.id }, taskIndex)
+            handleDragEnter(
+              $event,
+              task.name,
+              { id: dataItem.id, task },
+              taskIndex
+            )
           "
-          :style="dragging ? styleTask({ id: dataItem.id }, task.name) : null"
+          :style="dragging ? styleTask(task.name) : null"
         >
           <font-awesome-icon class="icon" :icon="faGripVertical" />
           <div class="taskName">
@@ -136,7 +141,7 @@ export default {
       });
       this.data = updatedData;
     },
-    styleTask(params, taskName) {
+    styleTask(taskName) {
       const currentItem = this.dragItem;
       if (currentItem.task.name === taskName) {
         return {
