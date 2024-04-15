@@ -17,6 +17,11 @@
           @dragstart="
             handleDragStart($event, task.name, { id: dataItem.id, task })
           "
+          :style="
+            dragging
+              ? styleTask({ id: dataItem.id, tasks: dataItem.tasks }, task.name)
+              : null
+          "
         >
           <font-awesome-icon class="icon" :icon="faGripVertical" />
           <div class="taskName">
@@ -108,6 +113,17 @@ export default {
         }
       });
       this.data = updatedData;
+    },
+    styleTask(params, taskName) {
+      const currentItem = this.dragItem;
+      if (currentItem.task.name === taskName) {
+        return {
+          backgroundColor: "rgb(27, 28, 31, 0.1)",
+          border: "none",
+          color: "rgb(0, 0, 0, 0.2)",
+        };
+      }
+      return null;
     },
   },
   computed: {
