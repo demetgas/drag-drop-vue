@@ -92,10 +92,18 @@ export default {
       this.dragItem = null;
       this.dragNode = null;
     },
+    checkEven(cardId, taskName) {
+      if (
+        cardId === "Even" &&
+        parseInt(taskName.replace("task", "")) % 2 !== 0
+      ) {
+        return false;
+      }
+      return true;
+    },
     handleDrop(e, cardId) {
       const taskName = e.dataTransfer.getData("id");
-      const taskNumber = parseInt(taskName.replace("task", ""));
-      if (cardId === "Even" && taskNumber % 2 !== 0) {
+      if (!this.checkEven(cardId, taskName)) {
         return;
       }
       const updatedData = this.data.map((card) => {
@@ -118,18 +126,15 @@ export default {
     },
     handleDragEnter(e, taskName, params, taskIndex) {
       const currentItem = this.dragItem;
+      if (!this.checkEven(params.id, currentItem.task.name)) {
+        return;
+      }
       const updatedData = this.data.map((card) => {
         if (card.id === params.id) {
           const newTasks = [...card.tasks];
           const dragItem = newTasks.findIndex(
             (task) => task.name === currentItem.task.name
           );
-          if (
-            params.id === "Even" &&
-            parseInt(currentItem.task.name.replace("task", "")) % 2 !== 0
-          ) {
-            return card;
-          }
 
           if (dragItem !== -1) {
             newTasks.splice(dragItem, 1);
