@@ -4,7 +4,11 @@
       <div class="title" :style="{ backgroundColor: dataItem.backgroundColor }">
         <div class="titleName">{{ dataItem.id }}</div>
       </div>
-      <div class="list" @dragover.prevent>
+      <div
+        class="list"
+        @dragover.prevent
+        @drop="handleDrop($event, dataItem.id)"
+      >
         <div
           class="listItem"
           :draggable="true"
@@ -80,6 +84,13 @@ export default {
       }
       this.dragItem = null;
       this.dragNode = null;
+    },
+    handleDrop(e, cardId) {
+      const taskName = e.dataTransfer.getData("id");
+      const taskNumber = parseInt(taskName.replace("task", ""));
+      if (cardId === "Even" && taskNumber % 2 !== 0) {
+        return;
+      }
     },
   },
   computed: {
