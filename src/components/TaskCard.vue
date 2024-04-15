@@ -91,6 +91,23 @@ export default {
       if (cardId === "Even" && taskNumber % 2 !== 0) {
         return;
       }
+      const updatedData = this.data.map((card) => {
+        if (card.id === cardId) {
+          if (card.tasks.find((task) => task.name === taskName)) {
+            return card;
+          }
+          return {
+            ...card,
+            tasks: [...card.tasks, { name: taskName }],
+          };
+        } else {
+          return {
+            ...card,
+            tasks: card.tasks.filter((task) => task.name !== taskName),
+          };
+        }
+      });
+      this.data = updatedData;
     },
   },
   computed: {
