@@ -17,6 +17,14 @@
           @dragstart="
             handleDragStart($event, task.name, { id: dataItem.id, task })
           "
+          @dragenter="
+            handleDragEnter(
+              $event,
+              task.name,
+              { id: dataItem.id, task },
+              taskIndex
+            )
+          "
           :style="
             dragging
               ? styleTask({ id: dataItem.id, tasks: dataItem.tasks }, task.name)
@@ -111,6 +119,31 @@ export default {
             tasks: card.tasks.filter((task) => task.name !== taskName),
           };
         }
+      });
+      this.data = updatedData;
+    },
+    handleDragEnter(e, taskName, params, taskIndex) {
+      const currentItem = this.dragItem;
+      const updatedData = this.data.map((card) => {
+        if (card.id === params.id) {
+          const newTasks = [...card.tasks];
+          const dragItem = newTasks.findIndex(
+            (task) => task.name === currentItem.task.name
+          );
+          if (
+            params.id === "Even" &&
+            parseInt(currentItem.task.name.replace("task", "")) % 2 !== 0
+          ) {
+            return card;
+          }
+
+          if (dragItem !== -1) {
+            newTasks.splice(dragItem, 1);
+          }
+          newTasks.splice(taskIndex, 0, currentItem.task);
+          return { ...card, tasks: newTasks };
+        }
+        return card;
       });
       this.data = updatedData;
     },
