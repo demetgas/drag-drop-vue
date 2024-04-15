@@ -24,7 +24,7 @@
           </div>
         </div>
         <button
-          v-if="dataItem.tasks.length > 5"
+          v-if="dataItem.tasks.length > 6"
           class="btn"
           @click="toggleShowMoreTasks(dataItem.id)"
         >
@@ -64,7 +64,7 @@ export default {
     displayTasks(dataItem) {
       return this.showMoreTasks[dataItem.id]
         ? dataItem.tasks
-        : dataItem.tasks.slice(0, 5);
+        : dataItem.tasks.slice(0, 6);
     },
     handleDragStart(e, taskName, params) {
       console.log("hello");
