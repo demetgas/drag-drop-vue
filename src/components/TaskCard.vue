@@ -207,6 +207,19 @@ export default {
   cursor: grab;
   text-align: center;
   justify-content: space-between;
+  transition: transform 0.3s, background-color 0.3s, color 0.3s;
+}
+.listItem:active {
+  cursor: grabbing;
+  box-shadow: 2px 2px 5px #73767a;
+}
+.listItem:hover {
+  transform: scale(1.03);
+  background-color: #858997;
+  color: white;
+  .icon {
+    color: white;
+  }
 }
 
 .icon {
@@ -219,10 +232,6 @@ export default {
   margin: 0;
   margin-right: 4.5rem;
   width: 100px;
-}
-.listItem:active {
-  cursor: grabbing;
-  box-shadow: 2px 2px 5px #73767a;
 }
 .btn {
   border-radius: 5px;
