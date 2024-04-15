@@ -14,22 +14,11 @@
           :draggable="true"
           v-for="(task, taskIndex) in displayTasks(dataItem)"
           :key="taskIndex"
-          @dragstart="
-            handleDragStart($event, task.name, { id: dataItem.id, task })
-          "
+          @dragstart="handleDragStart($event, task.name, dataItem.id)"
           @dragenter="
-            handleDragEnter(
-              $event,
-              task.name,
-              { id: dataItem.id, task },
-              taskIndex
-            )
+            handleDragEnter($event, task.name, { id: dataItem.id }, taskIndex)
           "
-          :style="
-            dragging
-              ? styleTask({ id: dataItem.id, tasks: dataItem.tasks }, task.name)
-              : null
-          "
+          :style="dragging ? styleTask({ id: dataItem.id }, task.name) : null"
         >
           <font-awesome-icon class="icon" :icon="faGripVertical" />
           <div class="taskName">
@@ -79,10 +68,10 @@ export default {
         ? dataItem.tasks
         : dataItem.tasks.slice(0, 6);
     },
-    handleDragStart(e, taskName, params) {
+    handleDragStart(e, taskName, tasks) {
       console.log("hello");
       e.dataTransfer.setData("id", taskName);
-      this.dragItem = { ...params, task: { name: taskName } };
+      this.dragItem = { ...tasks, task: { name: taskName } };
       this.dragNode = e.target;
       if (this.dragNode) {
         this.dragNode.addEventListener("dragend", this.handleDragEnd);
