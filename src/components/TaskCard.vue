@@ -10,7 +10,9 @@
           :draggable="true"
           v-for="(task, taskIndex) in displayTasks(dataItem)"
           :key="taskIndex"
-          @dragstart="handleDragStart()"
+          @dragstart="
+            handleDragStart($event, task.name, { id: dataItem.id, task })
+          "
         >
           <font-awesome-icon class="icon" :icon="faGripVertical" />
           <div class="taskName">
@@ -30,6 +32,7 @@
 </template>
 
 <script>
+import { ref } from "vue";
 import { data } from "../data.js";
 import { faGripVertical } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -38,6 +41,9 @@ export default {
     return {
       data: data,
       showMoreTasks: {},
+      dragging: false,
+      dragItem: ref(null),
+      dragNode: ref(null),
     };
   },
   components: {
@@ -56,7 +62,25 @@ export default {
         ? dataItem.tasks
         : dataItem.tasks.slice(0, 5);
     },
-    handleDragStart() {},
+    handleDragStart(e, taskName, params) {
+      console.log("hello");
+      e.dataTransfer.setData("id", taskName);
+      this.dragItem = { ...params, task: { name: taskName } };
+      if (this.dragNode) {
+        this.dragNode.addEventListener("dragend", this.handleDragEnd);
+      }
+
+      this.dragging = true;
+    },
+    handleDragEnd() {
+      console.log("bye");
+      this.dragging = false;
+      if (this.dragNode) {
+        this.dragNode.removeEventListener("dragend", this.handleDragEnd);
+      }
+      this.dragItem = null;
+      this.dragNode = null;
+    },
   },
   computed: {
     faGripVertical() {
