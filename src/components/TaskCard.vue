@@ -4,12 +4,13 @@
       <div class="title" :style="{ backgroundColor: dataItem.backgroundColor }">
         <div class="titleName">{{ dataItem.id }}</div>
       </div>
-      <div class="list">
+      <div class="list" @dragover.prevent>
         <div
           class="listItem"
           :draggable="true"
           v-for="(task, taskIndex) in displayTasks(dataItem)"
           :key="taskIndex"
+          @dragstart="handleDragStart()"
         >
           <font-awesome-icon class="icon" :icon="faGripVertical" />
           <div class="taskName">
@@ -55,6 +56,7 @@ export default {
         ? dataItem.tasks
         : dataItem.tasks.slice(0, 5);
     },
+    handleDragStart() {},
   },
   computed: {
     faGripVertical() {
