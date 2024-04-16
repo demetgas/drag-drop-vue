@@ -15,14 +15,7 @@
           v-for="(task, taskIndex) in displayTasks(dataItem)"
           :key="taskIndex"
           @dragstart="handleDragStart($event, task.name, dataItem.id)"
-          @dragenter="
-            handleDragEnter(
-              $event,
-              task.name,
-              { id: dataItem.id, task },
-              taskIndex
-            )
-          "
+          @dragenter="handleDragEnter({ id: dataItem.id, task }, taskIndex)"
           :style="dragging ? styleTask(task.name) : null"
         >
           <font-awesome-icon class="icon" :icon="faGripVertical" />
@@ -76,7 +69,7 @@ export default {
     handleDragStart(e, taskName, tasks) {
       console.log("hello");
       e.dataTransfer.setData("id", taskName);
-      this.dragItem = { ...tasks, task: { name: taskName } };
+      this.dragItem = { tasks, task: { name: taskName } };
       this.dragNode = e.target;
       if (this.dragNode) {
         this.dragNode.addEventListener("dragend", this.handleDragEnd);
@@ -124,7 +117,7 @@ export default {
       });
       this.data = updatedData;
     },
-    handleDragEnter(e, taskName, params, taskIndex) {
+    handleDragEnter(params, taskIndex) {
       const currentItem = this.dragItem;
       if (!this.checkEven(params.id, currentItem.task.name)) {
         return;
