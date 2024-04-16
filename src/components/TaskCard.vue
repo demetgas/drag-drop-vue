@@ -69,11 +69,11 @@ export default {
     handleDragStart(e, taskName, tasks) {
       console.log("hello");
       e.dataTransfer.setData("id", taskName);
-      this.dragItem = { ...tasks, task: { name: taskName } };
+      this.dragItem = { tasks, task: { name: taskName } };
       this.dragNode = e.target;
-      if (this.dragNode) {
-        this.dragNode.addEventListener("dragend", this.handleDragEnd);
-      }
+      // if (this.dragNode) {
+      this.dragNode.addEventListener("dragend", this.handleDragEnd);
+      //  }
       this.dragging = true;
     },
     handleDragEnd() {
