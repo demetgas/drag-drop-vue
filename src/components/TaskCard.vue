@@ -125,12 +125,12 @@ export default {
       const updatedData = this.data.map((card) => {
         if (card.id === params.id) {
           const newTasks = [...card.tasks];
-          const dragItem = newTasks.findIndex(
+          const draggedItem = newTasks.findIndex(
             (task) => task.name === currentItem.task.name
           );
 
-          if (dragItem !== -1) {
-            newTasks.splice(dragItem, 1);
+          if (draggedItem !== -1) {
+            newTasks.splice(draggedItem, 1);
           }
           newTasks.splice(taskIndex, 0, currentItem.task);
           return { ...card, tasks: newTasks };
