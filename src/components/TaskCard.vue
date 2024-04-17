@@ -162,15 +162,16 @@ export default {
 <style scoped>
 .cardContainer {
   display: flex;
+  font-family: "Times New Roman", Times, serif;
+  gap: 20px;
 }
 .card {
-  border-radius: 5px;
-  margin-right: 20px;
-  font-family: "Times New Roman", Times, serif;
+  border-radius: 10px;
 }
 .title {
-  border-radius: 5px;
   padding: 48px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   border: 1px solid #ccc;
   text-align: center;
 }
@@ -182,7 +183,6 @@ export default {
 .list {
   display: flex;
   flex-direction: column;
-  border-radius: 5px;
   background-color: rgb(192, 196, 209);
   height: 680px;
   overflow-y: auto;
