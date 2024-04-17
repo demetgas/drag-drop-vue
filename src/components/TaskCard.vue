@@ -1,6 +1,11 @@
 <template>
   <div class="cardContainer">
-    <div v-for="dataItem in data" :key="dataItem.id" class="card">
+    <div
+      v-for="dataItem in data"
+      :key="dataItem.id"
+      class="card"
+      :style="dragging ? styleCard(dataItem.id) : null"
+    >
       <div class="title" :style="{ backgroundColor: dataItem.backgroundColor }">
         <div class="titleName">{{ dataItem.id }}</div>
       </div>
@@ -48,6 +53,7 @@ export default {
       dragging: false,
       dragItem: ref(null),
       dragNode: ref(null),
+      dragOverCard: null,
     };
   },
   components: {
@@ -119,6 +125,7 @@ export default {
     },
     handleDragEnter(params, taskIndex) {
       const currentItem = this.dragItem;
+      this.dragOverCard = params.id;
       if (!this.checkEven(params.id, currentItem.task.name)) {
         return;
       }
@@ -147,6 +154,16 @@ export default {
           border: "none",
           color: "rgb(0, 0, 0, 0.2)",
         };
+      }
+      return null;
+    },
+    styleCard(id) {
+      if (this.dragOverCard === id) {
+        if (this.checkEven(id, this.dragItem.task.name)) {
+          return {
+            border: "2px solid white",
+          };
+        }
       }
       return null;
     },
