@@ -16,6 +16,7 @@
       >
         <div
           class="listItem"
+          :class="{ dragging: dragging }"
           :draggable="true"
           v-for="(task, taskIndex) in displayTasks(dataItem)"
           :key="taskIndex"
@@ -241,6 +242,11 @@ export default {
   .icon {
     color: white;
   }
+}
+.listItem.dragging:hover {
+  transform: none;
+  background-color: rgb(224, 225, 228);
+  color: black;
 }
 
 .icon {
