@@ -141,11 +141,13 @@ export default {
           }
           newTasks.splice(taskIndex, 0, currentItem.task);
           return { ...card, tasks: newTasks };
-        } else if (card.id ===currentItem.cardId && card.id !== params.id && this.checkEven(params.id,currentItem.task.name) ){
-          return{
+        } else if (card.id !== currentItem.cardId) {
+          return {
             ...card,
-            tasks: card.tasks.filter((task)=> task.name !== currentItem.task.name)
-          }
+            tasks: card.tasks.filter(
+              (task) => task.name !== currentItem.task.name
+            ),
+          };
         }
         return card;
       });
