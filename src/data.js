@@ -18,15 +18,14 @@ export const data = [
     tasks: [{ name: "task 9" }, { name: "task 10" }],
     backgroundColor: "#4A71A5",
   },
-
-  {
-    id: "Even",
-    tasks: [{ name: "task 12" }, { name: "task 14" }, { name: "task 16" }],
-    backgroundColor: "#A5A14A",
-  },
   {
     id: "Done",
     tasks: [{ name: "task 17" }],
     backgroundColor: "#4AA561",
+  },
+  {
+    id: "Even",
+    tasks: [{ name: "task 12" }, { name: "task 14" }, { name: "task 16" }],
+    backgroundColor: "#A5A14A",
   },
 ];
