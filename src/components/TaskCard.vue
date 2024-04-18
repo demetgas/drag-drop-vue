@@ -247,6 +247,9 @@ export default {
   transform: none;
   background-color: rgb(224, 225, 228);
   color: black;
+  .icon {
+    color: rgb(125, 120, 120);
+  }
 }
 
 .icon {
