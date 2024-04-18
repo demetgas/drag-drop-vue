@@ -141,7 +141,7 @@ export default {
           }
           newTasks.splice(taskIndex, 0, currentItem.task);
           return { ...card, tasks: newTasks };
-        } else if (card.id !== currentItem.cardId) {
+        } else {
           return {
             ...card,
             tasks: card.tasks.filter(
@@ -149,7 +149,6 @@ export default {
             ),
           };
         }
-        return card;
       });
       this.data = updatedData;
     },
