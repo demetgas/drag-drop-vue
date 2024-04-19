@@ -16,7 +16,7 @@
       >
         <div
           class="listItem"
-          :class="{ dragging: dragging }"
+          :class="{ dragging }"
           :draggable="true"
           v-for="(task, taskIndex) in displayTasks(dataItem)"
           :key="taskIndex"
