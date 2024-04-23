@@ -8,6 +8,8 @@
     >
       <div class="title" :style="{ backgroundColor: dataItem.backgroundColor }">
         <div class="titleName">{{ dataItem.id }}</div>
+        <div v-if="dataItem.tasks.length>0" class="titleName">({{ dataItem.tasks.length}} tasks)</div>
+
       </div>
       <div
         class="list"
