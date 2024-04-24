@@ -8,8 +8,17 @@
     >
       <div class="title" :style="{ backgroundColor: dataItem.backgroundColor }">
         <div class="titleName">{{ dataItem.id }}</div>
-        <div v-if="dataItem.tasks.length>0" class="titleName">({{ dataItem.tasks.length}} tasks)</div>
-
+        <div class="titleName">
+          -
+          {{
+            dataItem.tasks.length === 0
+              ? "No tasks available"
+              : dataItem.tasks.length === 1
+              ? "1 task"
+              : dataItem.tasks.length + " tasks"
+          }}
+          -
+        </div>
       </div>
       <div
         class="list"
@@ -195,11 +204,15 @@ export default {
   border-radius: 10px;
 }
 .title {
-  padding: 48px;
+  padding: 43px;
+  align-items: center;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border: 1px solid #ccc;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .titleName {
   font-weight: bold;
