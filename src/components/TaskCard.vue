@@ -171,6 +171,7 @@ export default {
           backgroundColor: "rgb(27, 28, 31, 0.1)",
           border: "none",
           color: "rgb(0, 0, 0, 0.2)",
+          textDecoration: "underline"
         };
       }
       return null;
