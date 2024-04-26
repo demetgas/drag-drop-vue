@@ -1,4 +1,4 @@
-Implemented drag-and-drop functionality in a ReactJS application, no external libraries needed.
+Implemented drag-and-drop functionality in a VueJS application, no external libraries needed.
 
 Designed four draggable cards to manage tasks efficiently.
 
