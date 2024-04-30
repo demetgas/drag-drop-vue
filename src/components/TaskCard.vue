@@ -60,7 +60,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 export default {
   data() {
     return {
-      data: data,
+      data: JSON.parse(localStorage.getItem("tasks")) || data,
       showMoreTasks: {},
       dragging: false,
       dragItem: ref(null),
@@ -134,6 +134,7 @@ export default {
         }
       });
       this.data = updatedData;
+      localStorage.setItem("tasks", JSON.stringify(updatedData));
     },
     handleDragEnter(params, taskIndex) {
       const currentItem = this.dragItem;
@@ -163,6 +164,7 @@ export default {
         }
       });
       this.data = updatedData;
+      localStorage.setItem("tasks", JSON.stringify(updatedData));
     },
     styleTask(taskName) {
       const currentItem = this.dragItem;
@@ -171,7 +173,7 @@ export default {
           backgroundColor: "rgb(27, 28, 31, 0.1)",
           border: "none",
           color: "rgb(0, 0, 0, 0.2)",
-          textDecoration: "underline"
+          textDecoration: "underline",
         };
       }
       return null;
